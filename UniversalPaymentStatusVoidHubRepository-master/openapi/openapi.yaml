@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   version: 1.0.0
-  title: ECHOHUB Clearing House Portal  
+  title: ECHOHUB  Universal Payment Void  
   contact:
     email: Echo_Crhc@echohealthinc.com
     url: 'https://echohubDocumentation@echohealthinc.com'
@@ -33,43 +33,9 @@ paths:
   #Authorization
   /api/Authentication/v1/Authentication:
     $ref: paths/Authentication/api@RequestAuthentication@V1.yaml
-    #ClearingHousePotal 
-  /api/ClearingHouse/v1/Portal [Register User]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@RegisterUser.yaml
-  /api/ClearingHouse/v1/Portal [Validate User]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@ValidateUser.yaml
-  /api/ClearingHouse/v1/Portal [Get Clearing House By Domain]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@GetCHByDomain.yaml
-  /api/ClearingHouse/v1/Portal [Send an email]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@SendEmail.yaml
-  /api/ClearingHouse/v1/Portal [Validate an email]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@ValidateEmail.yaml
-  /api/ClearingHouse/v1/Portal [Approve Pending User Registration]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@ApprovePendingUserRegistartion.yaml
-  /api/ClearingHouse/v1/Portal [Check on Create Password Link Expiry]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@CheckPasswordLinkExpiry.yaml
-  /api/ClearingHouse/v1/Portal [Create Password]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@CreatePassword.yaml
-  /api/ClearingHouse/v1/Portal [Decline Pending User Registration]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@DeclinePendingUserRegistration.yaml
-  /api/ClearingHouse/v1/Portal [Get All Pending User Registration]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@GetAllPendingUserRegistration.yaml
-  /api/ClearingHouse/v1/Portal [Create CH Admin]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@CreateCHAdmin.yaml
-  /api/ClearingHouse/v1/Portal [Get CH Admin Details By Registration Key]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@GetCHAdminByRegistrationKey.yaml
-  /api/ClearingHouse/v1/Portal [Get CH Admin Details By Id]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@GetCHAdminDetailsByID.yaml
-  /api/ClearingHouse/v1/Portal [Get All CH Admin Requests]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@GetAllCHAdminRequests.yaml
-  /api/ClearingHouse/v1/Portal [Delete CH Admin]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@DeleteCHAdmin.yaml
-  /api/ClearingHouse/v1/Portal [Get Build Version]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@GetBuildVersion.yaml
-  /api/ClearingHouse/v1/Portal [Get Active CH By User Name]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@GetActiveCHByUserName.yaml
-  /api/ClearingHouse/v1/Portal [Register CH Admin]:
-    $ref: paths/ClearingHousePortal/api@ClearingHouse@v1@RegisterCHAdmin.yaml
+  #Universal Payment Void
+  /api/DirectPay/v1/PaymentVoid:
+    $ref: paths/UniversalVoid/api@DirectPay@v1@UniversalDeluxeVoid.yaml  
       
 components:
   securitySchemes:
@@ -95,9 +61,7 @@ tags:
     description: |
       This endpoint helps to generate the Authorization Token for accessing the endpoints. 
       #Clearing House Portal
-   #Clearing House Portal   
-  - name: Clearinghouse Portal 
-    description: |
-     A clearinghouse functions as an intermediary for the transactions between healthcare providers and insurance payers. The clearinghouse is imperative to the processing of all medical claims and records electronically to ensure a faster turnaround on claim processing. 
-     ECHO’s clearinghouse portal is a website that allows clearinghouses to check EFT (Electronic Funds Transfer)/ERA (Electronic Remittance Advice) enrollment status for their providers. The portal also provides the bulk EFT and ERA status reports and reposts missing 835 files to the clearinghouse directory.
-     The clearinghouse portal controls clearinghouse access by managing user access and limiting users to only the data pertinent to their company. The portal also establishes the domains associated with the clearinghouse, as well as IP ranges where possible. 
+   #Universal Payment Void
+  - name:  Payment Void
+    description: |      
+         The  Payment Void endpoint allows the API user to access and void a payment like Deluxe eCheck based on the Library method. This endpoint helps validate and call a particular API internally based on the unique Payor Reference ID. This is used for in-house application only.
